@@ -5,6 +5,7 @@ const dotenv = require ("dotenv")
 const cors = require ("cors");
 const connectDB = require("./configDB/db");
 const route = require("./Routes/authRoutes");
+const path = require('path')
 
 // Environment Variables file configuration
 dotenv.config();
@@ -20,13 +21,15 @@ app.use(express.json());
 app.use(morgan('dev'));
 // Cross Origin Access provide karta hain
 app.use(cors());
+// adding path middleware
+app.use(express.static(path.join(__dirname, './my-app/build')));
 
 
 // Creating route for accessing 
 app.use('/api/v1/auth',route);
 
-app.get('/', (req, res) => {
-      res.send("Hello !! Welcome to My E - Voting Portal");
+app.use('*', (req, res) => {
+      res.sendFile(path.join(__dirname, './my-app/build/index.html'));
 })
 
 const Port = process.env.PORT || 6000

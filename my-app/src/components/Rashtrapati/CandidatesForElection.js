@@ -59,7 +59,7 @@ const CandidatesForElection = () => {
       value = value1;
     }
 
-    console.log(`value = ${value} value1 = ${value1} value2=${value2}`);
+  //  console.log(`value = ${value} value1 = ${value1} value2=${value2}`);
 
     const Id = selectedCandidate.ID; // Update this line to get the ID from the selectedCandidate
     const updated = {
